@@ -1,3 +1,10 @@
 URL: https://data.world/craigkelly/steam-game-data
 Date retrieved: 3/26/19
 Date created: 12/16/2016
+
+
+## Fields to remove
+DRMNotice
+ExtUserAccNotice
+LegalNotice
+Reviews
