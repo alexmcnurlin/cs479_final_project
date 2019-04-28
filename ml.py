@@ -49,6 +49,7 @@ dataset_test = (
 # normed_train_data = norm(train_dataset)
 # normed_test_data = norm(test_dataset)
 
+
 def build_model():
     model = tf.keras.Sequential([
         layers.Dense(64, activation=tf.nn.relu, input_shape=[len(df.keys())]),
@@ -59,19 +60,23 @@ def build_model():
     optimizer = tf.keras.optimizers.RMSprop(0.001)
 
     model.compile(loss='mean_squared_error',
-                optimizer=optimizer,
-                metrics=['mean_absolute_error', 'mean_squared_error'])
+                  optimizer=optimizer,
+                  metrics=['mean_absolute_error', 'mean_squared_error'])
     return model
+
 
 model = build_model()
 # model.summary()
 
 # Display training progress by printing a single dot for each completed epoch
+
+
 class PrintDot(tf.keras.callbacks.Callback):
-      def on_epoch_end(self, epoch, logs):
-            if epoch % 100 == 0:
-                print('')
-            print('.', end='')
+    def on_epoch_end(self, epoch, logs):
+        if epoch % 100 == 0:
+            print('')
+        print('.', end='')
+
 
 EPOCHS = 1000
 
