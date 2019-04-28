@@ -4,7 +4,7 @@ import os
 import tensorflow as tf
 import pandas as pd
 import numpy as np
-# import seaborn as sns
+import seaborn as sns
 from tensorflow.keras import layers
 
 tf.enable_eager_execution()
@@ -43,11 +43,12 @@ dataset_test = (
     )
 )
 
+
 # TODO: Normalize data?
-# def norm(x):
-#   return (x - train_stats['mean']) / train_stats['std']
-# normed_train_data = norm(train_dataset)
-# normed_test_data = norm(test_dataset)
+def norm(x):
+    return (x - dataset_train['mean']) / dataset_train['std']
+normed_train_data = norm(dataset_train)
+normed_test_data = norm(dataset_test)
 
 def build_model():
     model = tf.keras.Sequential([
@@ -64,7 +65,8 @@ def build_model():
     return model
 
 model = build_model()
-# model.summary()
+model.summary()
+
 
 # Display training progress by printing a single dot for each completed epoch
 class PrintDot(tf.keras.callbacks.Callback):
@@ -75,11 +77,11 @@ class PrintDot(tf.keras.callbacks.Callback):
 
 EPOCHS = 1000
 
-history = model.fit(
-    dataset_train,
-    train_labels,
-    epochs=EPOCHS,
-    validation_split=0.2,
-    verbose=0,
-    callbacks=[PrintDot()]
-)
+#history = model.fit(
+ #   dataset_train,
+  #  train_labels,
+   # epochs=EPOCHS,
+    #validation_split=0.2,
+    #verbose=0,
+    #callbacks=[PrintDot()]
+#)
