@@ -1,4 +1,5 @@
 #! /usr/bin/env python3
+# https://www.tensorflow.org/tutorials/keras/basic_regression
 
 import os
 import tensorflow as tf
